@@ -1,0 +1,31 @@
+<nz-card nzTitle="Prioritize Ticket" style="margin: 20px 0;">
+    <div nz-row>
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="10">
+            <span nz-typography>Clinical Setting : </span>
+            <nz-select  [(ngModel)]="selectedType" style="width: 70%;">
+                <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="11"></div>
+    </div>
+</nz-card>
+
+<nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+          {{ column.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.ticket }}</td>
+        <td>{{ data.serviceQueue }}</td>
+        <td>{{ data.priority }}</td>
+        <td>{{ data.waitingTime }}</td>
+        <td><a href="#" nz-typography>Prioritize</a></td>
+      </tr>
+    </tbody>
+</nz-table>

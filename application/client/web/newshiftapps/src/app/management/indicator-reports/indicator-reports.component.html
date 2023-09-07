@@ -1,0 +1,9 @@
+<nz-select [(ngModel)]="selectedType" (ngModelChange)="onChange($event)">
+    <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+</nz-select>
+
+<app-real-time *ngIf="selectedType === 'Real Time'"></app-real-time>
+<app-logs *ngIf="selectedType === 'Logs'"></app-logs>
+<app-foot-traffic *ngIf="selectedType === 'Foot Traffic'"></app-foot-traffic>
+<app-average-time *ngIf="selectedType === 'Average Time'"></app-average-time>
+<app-comparative *ngIf="selectedType === 'Comparative'"></app-comparative>

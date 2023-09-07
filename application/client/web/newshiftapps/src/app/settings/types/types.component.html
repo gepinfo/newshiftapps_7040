@@ -1,0 +1,73 @@
+<nz-input-group [nzSuffix]="suffixIconSearch" style="width: auto;">
+    <input type="text" nz-input placeholder="search..." />
+</nz-input-group>
+<ng-template #suffixIconSearch>
+    <span nz-icon nzType="search"></span>
+</ng-template>
+
+<button nz-button style="float: right; background-color: #2c2cbb; color: #fff;" (click)="showModal()">
+    <span nz-icon nzType="file-add" nzTheme="outline"></span>
+    New Type
+</button>
+
+<nz-modal
+      [(nzVisible)]="isVisible"
+      [nzTitle]="'Create Type'"
+      [nzContent]="modalContent"
+      [nzFooter]="modalFooter"
+      (nzOnOk)="handleOk()"
+      (nzOnCancel)="handleCancel()"
+    >
+      <ng-template #modalTitle>Create Type</ng-template>
+
+      <ng-template #modalContent>
+        <nz-form-label [nzSpan]="6">Type</nz-form-label>
+        <input nz-input placeholder="Enter Type" [(ngModel)]="type" />
+        <nz-form-label [nzSpan]="6" style="margin-top: 20px;">Description</nz-form-label>
+        <input nz-input placeholder="Enter Description" [(ngModel)]="description">
+        <nz-form-label [nzSpan]="6" style="margin-top: 20px;">Priority</nz-form-label>
+        <nz-select [(ngModel)]="singleValue" [nzSize]="size">
+            <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </ng-template>
+
+      <ng-template #modalFooter>
+        <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+        <button nz-button nzType="primary" (click)="handleOk()" >Create</button>
+      </ng-template>
+    </nz-modal>
+
+
+<div nz-row style="margin: 25px 0;">
+    <div nz-col nzSpan="24">
+        <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+            <thead>
+              <tr>
+                <th nzColumnKey="name" [nzSortFn]="true">Type</th>
+                <th nzColumnKey="userName" [nzSortFn]="true">Description</th>
+                <th nzColumnKey="accessProfile" [nzSortFn]="true" [nzFilters]="filterAccessProfile" [nzFilterFn]="true">Priority</th>
+                <th nzWidth="100px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of filterTable.data">
+                <td>{{ data.type }}</td>
+                <td>{{ data.description }}</td>
+                <td>{{ data.priority }}</td>
+                <td>
+                    <a nz-dropdown [nzDropdownMenu]="menu" (nzVisibleChange)="change($event)" style="color: gray; font-size: 15px;">
+                        ...
+                        <span nz-icon nzType="down"></span>
+                    </a>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu>
+                          <li nz-menu-item>Edit</li>
+                          <li nz-menu-item>View</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </td>
+              </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<nz-layout class="inner-layout" style="height: 100%;">
+    <nz-sider nzWidth="230px" nzTheme="light">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-menu-item nzSelected (click)="setTitle('Users')">Users</li>
+        <li nz-menu-item (click)="setTitle('Tickets')">Tickets</li>
+        <li nz-menu-item (click)="setTitle('Types')">Types</li>
+        <li nz-menu-item (click)="setTitle('Modules')">Modules</li>
+        <li nz-menu-item (click)="setTitle('Products')">Products</li>
+      </ul>
+    </nz-sider>
+    <nz-content class="inner-content">
+        <app-users-list *ngIf="title === 'Users'"></app-users-list>
+        <app-tickets *ngIf="title === 'Tickets'"></app-tickets>
+        <app-types *ngIf="title === 'Types'"></app-types>
+        <app-modules *ngIf="title === 'Modules'"></app-modules>
+        <app-products *ngIf="title === 'Products'"></app-products>
+    </nz-content>
+  </nz-layout>

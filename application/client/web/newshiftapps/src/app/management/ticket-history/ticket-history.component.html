@@ -1,0 +1,86 @@
+<nz-card nzTitle="Ticket History" style="margin: 20px 0;">
+    <div nz-row>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="8">
+            <span nz-typography>Clinical Setting : </span>
+            <nz-select  [(ngModel)]="selectedType">
+                <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="7">
+            <span nz-typography>Date : </span>
+            <nz-date-picker [nzFormat]="dateFormat"></nz-date-picker>
+        </div>
+        <div nz-col nzSpan="7">
+            <span nz-typography>Ticket : </span>
+            <input nz-input placeholder="" [(ngModel)]="value" style="width: 75%;" />
+        </div>
+        <div nz-col nzSpan="1"></div>
+    </div>
+
+      <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="12"></div>
+        <div nz-col nzSpan="4"></div>
+        <div nz-col nzSpan="8">
+            <button nz-button nzType="primary" style="margin-left: 15px; float: right;">Search History</button>
+        </div>
+      </div>
+</nz-card>
+
+<div nz-row>
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="8">
+        <nz-card nzTitle="XPTO123" style="margin: 20px 0;">
+            <nz-steps [nzCurrent]="1" nzProgressDot nzDirection="vertical">
+                <nz-step nzTitle="20/08/2023 - 12:41" nzDescription="Marcos Olivera"></nz-step>
+                <nz-step nzTitle="20/08/2023 - 12:41" nzDescription="Marcos Olivera"></nz-step>
+                <nz-step nzTitle="20/08/2023 - 12:41" nzDescription="Marcos Olivera"></nz-step>
+            </nz-steps>
+        </nz-card>
+    </div>
+    <div nz-col nzSpan="1"></div>
+    <div nz-col nzSpan="9">
+        <nz-card style="margin: 20px 0; background-color: #ffffbe;">
+            <span nz-typography><strong>Colors default NG-Zorro</strong></span>
+            <span nz-typography>
+                <a href="https://ng.ant.design/" target="_blank">https://ng.ant.design/</a>
+            </span>
+            <p nz-typography nzType="danger">
+                <span nz-typography nzType="danger">Patient Dropout</span>
+                <span nz-typography nzType="danger" class="fr">@Red-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography nzType="danger">Ticket Cancelled</span>
+                <span nz-typography nzType="danger" class="fr">@Red-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="purple">Ticket Reactivated</span>
+                <span nz-typography class="fr purple">@Purple-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="purple">Ticket Printed</span>
+                <span nz-typography class="fr purple">@Purple-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="gray">Ticket Finished</span>
+                <span nz-typography class="fr gray">@Gray-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="blue">Ticket Called</span>
+                <span nz-typography class="fr blue">@Blue-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="magenta">Returned To Queue</span>
+                <span nz-typography class="fr magenta">@Magenta-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="cyan">Ticket Directed</span>
+                <span nz-typography class="fr cyan">@Cyan-7</span>
+            </p>
+            <p nz-typography nzType="danger">
+                <span nz-typography class="purple">Ticket Issued</span>
+                <span nz-typography class="fr purple">@Purple-7</span>
+            </p>
+        </nz-card>
+    </div>
+</div>

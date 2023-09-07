@@ -1,0 +1,7 @@
+{
+  "name": "newshiftapps",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

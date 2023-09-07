@@ -1,0 +1,46 @@
+<nz-card nzTitle="Logs" style="margin: 20px 0;">
+    <div nz-row>
+        <div nz-col nzSpan="4"></div>
+        <div nz-col nzSpan="8">
+            <span nz-typography>Clinical Setting : </span>
+            <nz-select  [(ngModel)]="selectedType">
+                <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="8">
+            <span nz-typography>Actions : </span>
+            <nz-select  [(ngModel)]="selectedAction">
+                <nz-option *ngFor="let p of actions" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="4"></div>
+      </div>
+
+      <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="11">
+            <span nz-typography>Time Frame : </span>
+            <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+        </div>
+        <div nz-col nzSpan="10">
+            <span nz-typography>Time : </span>
+            <nz-time-picker [(ngModel)]="time" [nzUse12Hours]="true" (ngModelChange)="log($event)"></nz-time-picker>
+            <nz-time-picker
+            [(ngModel)]="time"
+            [nzUse12Hours]="true"
+            (ngModelChange)="log($event)"
+            nzFormat="h:mm a"
+            ></nz-time-picker>
+        </div>
+        <div nz-col nzSpan="1"></div>
+      </div>
+
+      <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="12"></div>
+        <div nz-col nzSpan="4"></div>
+        <div nz-col nzSpan="8">
+            <button nz-button nzType="default" nzPrimary>Download CSV</button>
+            <button nz-button nzType="primary" style="margin-left: 15px;">Generate Indicators</button>
+        </div>
+      </div>
+</nz-card>

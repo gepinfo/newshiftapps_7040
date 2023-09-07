@@ -1,0 +1,51 @@
+<nz-card nzTitle="Real Time" style="margin: 20px 0;">
+    <div nz-row>
+        <div nz-col nzSpan="4" nzOrder="1" class="box-text">
+            <p nz-typography>Waiting</p>
+            <p nz-typography>24</p>
+        </div>
+        <div nz-col nzSpan="4" nzOrder="2" class="box-text">
+            <p nz-typography>Currently being served</p>
+            <p nz-typography>12</p>
+        </div>
+        <div nz-col nzSpan="4" nzOrder="3" class="box-text">
+            <p nz-typography>Finished</p>
+            <p nz-typography>27</p>
+        </div>
+        <div nz-col nzSpan="4" nzOrder="4" class="box-text">
+            <p nz-typography>Dropouts</p>
+            <p nz-typography>3</p>
+        </div>
+        <div nz-col nzSpan="4" nzOrder="5" class="box-text">
+            <p nz-typography>Cancelled</p>
+            <p nz-typography>1</p>
+        </div>
+        <div nz-col nzSpan="4" nzOrder="6" class="box-text">
+            <p nz-typography>Total</p>
+            <p nz-typography>67</p>
+        </div>
+    </div>
+</nz-card>
+
+<nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+          {{ column.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.clinicalSetting }}</td>
+        <td>{{ data.waiting }}</td>
+        <td>{{ data.cbs }}</td>
+        <td>{{ data.finished }}</td>
+        <td>{{ data.dropouts }}</td>
+        <td>{{ data.cancelled }}</td>
+        <td>{{ data.longestWait }}</td>
+        <td>{{ data.workingPosition }}</td>
+        <td>{{ data.total }}</td>
+      </tr>
+    </tbody>
+</nz-table>

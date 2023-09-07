@@ -1,0 +1,64 @@
+<nz-card nzTitle="Average Time" style="margin: 20px 0;">
+    <div nz-row>
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="8">
+            <span nz-typography>Comparative Types : </span>
+            <nz-select  [(ngModel)]="selectedComparativeType" style="width: 57%;" (ngModelChange)="onChangeComparativeType($event)">
+                <nz-option *ngFor="let p of comparativeTypes" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="10">
+            <span nz-typography>Considerar : </span>
+            <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="onCheck(checkOptionsOne)"></nz-checkbox-group>
+        </div>
+        <div nz-col nzSpan="3"></div>
+    </div>
+    
+    <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="8">
+            <span nz-typography *ngIf="showClinicalSettingA" >Clinical Setting : </span>
+            <nz-select  [(ngModel)]="selectedType" *ngIf="showClinicalSettingA" style="width: 65%;">
+                <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="8">
+            <span nz-typography *ngIf="showClinicalSettingB">Clinical Setting : </span>
+            <nz-select  [(ngModel)]="selectedType" *ngIf="showClinicalSettingB" style="width: 65%;">
+                <nz-option *ngFor="let p of data" [nzValue]="p" [nzLabel]="p"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzSpan="3"></div>
+    </div>
+
+    <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="10">
+            <span nz-typography>Time Frame : </span>
+            <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+        </div>
+        <div nz-col nzSpan="9">
+            <span nz-typography>Time : </span>
+            <nz-time-picker [(ngModel)]="time" [nzUse12Hours]="true" (ngModelChange)="log($event)"></nz-time-picker>
+            <nz-time-picker
+            [(ngModel)]="time"
+            [nzUse12Hours]="true"
+            (ngModelChange)="log($event)"
+            nzFormat="h:mm a"
+            ></nz-time-picker>
+        </div>
+        <div nz-col nzSpan="3"></div>
+    </div>
+
+      <div nz-row style="margin: 20px 0;">
+        <div nz-col nzSpan="12"></div>
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="8">
+            <button nz-button nzType="primary" style="margin-left: 15px; float: right;">Generate Comparative</button>
+            <button nz-button nzType="primary" style="margin-left: 15px; float: right;">Export CSV</button>
+        </div>
+        <div nz-col nzSpan="2"></div>
+      </div>
+</nz-card>
